@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DomailerJS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Domailer<span>JS</span></h1>
+      <div class="info">
+        <p>Belum Dibaca: <span id="unread">0</span></p>
+        <div class="garis"></div>
+        <p>Berbintang: <span id="starred">0</span></p>
+      </div>
+    </div>
+
+    <!-- Search + Option -->
+    <div class="searchBar">
+      <input type="text" id="search" placeholder="Cari pengirim atau subjek..." />
+      <div class="option">
+        <button class="btnFilter active" data-filter="all">Semua</button>
+        <button class="btnFilter" data-filter="unread">Belum Dibaca</button>
+        <button class="btnFilter" data-filter="starred">Berbintang</button>
+        <button class="btnCompose" id="btnCompose">+ Tulis Pesan</button>
+      </div>
+    </div>
+
+    <!-- Selected Bar -->
+    <div class="selectedBar" id="selectedBar" style="display: none">
+      <p><span id="jmlPilih">0</span> pesan terpilih</p>
+      <button class="btnRead" onclick="tandaiSudahBaca()">Tandai Sudah Dibaca</button>
+      <button class="btnHapus" onclick="hapusTerpilih()">Hapus Terpilih</button>
+    </div>
+
+    <!-- Compose Form -->
+    <div class="composeForm" id="composeForm" style="display: none">
+      <h3>Tulis Pesan Baru</h3>
+      <input type="text" id="pengirim" placeholder="Pengirim..." />
+      <input type="text" id="subjek" placeholder="Subjek..." />
+      <textarea id="isiPesan" rows="5" placeholder="Tulis pesan..."></textarea>
+      <div class="aksiCompose">
+        <button class="btnBatal" onclick="batalCompose()">Batal</button>
+        <button class="btnKirim" onclick="kirimPesan()">Kirim</button>
+      </div>
+    </div>
+
+    <!-- Table Email -->
+    <div class="tableWrap">
+      <table class="tabelEmail" border="0">
+        <thead>
+          <tr>
+            <th style="width: 40px">
+              <input type="checkbox" id="pilihSemua" onclick="pilihSemuaFungsi()" />
+            </th>
+            <th style="width: 40px; text-align: center">★</th>
+            <th style="width: 180px">Pengirim</th>
+            <th>Subjek & Isi Pesan</th>
+            <th style="width: 110px">Tanggal</th>
+            <th style="width: 80px">Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="daftarEmail"></tbody>
+      </table>
+      <div id="kosong" class="kosong" style="display: none">
+        Tidak ada pesan yang ditemukan
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
